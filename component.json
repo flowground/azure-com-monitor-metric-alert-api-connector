@@ -1,0 +1,186 @@
+{
+    "title": "MonitorManagementClient",
+    "description": "Azure Monitor client to create/update/delete metric based alerts.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/monitor-metricAlert_API/2018-03-01/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "MetricAlerts_ListBySubscription": {
+            "main": "./lib/actions/MetricAlerts_ListBySubscription.js",
+            "title": "Retrieve alert rule definitions in a subscription.",
+            "description": "Retrieve alert rule definitions in a subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/MetricAlerts_ListBySubscription.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "MetricAlerts_ListByResourceGroup": {
+            "main": "./lib/actions/MetricAlerts_ListByResourceGroup.js",
+            "title": "Retrieve alert rule definitions in a resource group.",
+            "description": "Retrieve alert rule definitions in a resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/MetricAlerts_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "MetricAlerts_Delete": {
+            "main": "./lib/actions/MetricAlerts_Delete.js",
+            "title": "Delete an alert rule definition.",
+            "description": "Delete an alert rule definition.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/MetricAlerts_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "MetricAlerts_Get": {
+            "main": "./lib/actions/MetricAlerts_Get.js",
+            "title": "Retrieve an alert rule definition.",
+            "description": "Retrieve an alert rule definition.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/MetricAlerts_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "MetricAlerts_Update": {
+            "main": "./lib/actions/MetricAlerts_Update.js",
+            "title": "Update an metric alert definition.",
+            "description": "Update an metric alert definition.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/MetricAlerts_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "MetricAlerts_CreateOrUpdate": {
+            "main": "./lib/actions/MetricAlerts_CreateOrUpdate.js",
+            "title": "Create or update an metric alert definition.",
+            "description": "Create or update an metric alert definition.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/MetricAlerts_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "MetricAlertsStatus_List": {
+            "main": "./lib/actions/MetricAlertsStatus_List.js",
+            "title": "Retrieve an alert rule status.",
+            "description": "Retrieve an alert rule status.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/MetricAlertsStatus_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "MetricAlertsStatus_ListByName": {
+            "main": "./lib/actions/MetricAlertsStatus_ListByName.js",
+            "title": "Retrieve an alert rule status.",
+            "description": "Retrieve an alert rule status.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/MetricAlertsStatus_ListByName.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
